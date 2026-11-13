@@ -67,6 +67,12 @@ variable "cidr_spoke2" {
   default     = "10.2.0.0/24"
 }
 
+variable "mgmt_public_ip" {
+  type        = bool
+  description = "If true, assign a public IP address to the management interface."
+  default     = false
+}
+
 variable "vmseries_image" {
   type        = string
   description = "Name of the VM-Series image within the paloaltonetworksgcp-public project.  To list available images, run: `gcloud compute images list --project paloaltonetworksgcp-public --no-standard-images`. If you are using a custom image in a different project, please update `local.vmseries_iamge_url` in `main.tf`."
