@@ -194,7 +194,10 @@ resource "google_compute_instance_template" "vmseries" {
 
   network_interface {
     subnetwork = google_compute_subnetwork.mgmt.id
-    access_config {}
+    dynamic "access_config" {
+      for_each = var.mgmt_public_ip ? [1] : []
+      content {}
+    }
   }
 
   network_interface {
